@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-
-
+# Liczenie zad3
 def licz_sume(dane_wejsciowe):
     # Przeliczniki
     przelicznik_sykli_na_geleony = 17
@@ -28,10 +26,11 @@ def licz_sume(dane_wejsciowe):
 
     return wynik
 
+# Powinno być git
+
 # Przykładowe użycie funkcji
 dane = {'geleon': 0, 'sykl': 0, 'knut': 0}
 print(licz_sume(dane))
-=======
 import time
 import random
 
@@ -54,4 +53,3 @@ powodzenie = wyslij_sowe(adresat, tresc_listu)
 print("Operacja powiodła się:", powodzenie)
 
 #Przetestowane, rzeczywiście raz na 10 razy sowa sie nie wysyla
->>>>>>> staging
