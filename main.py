@@ -38,7 +38,6 @@ def wybierz_sowe_zwroc_koszt(potwierdzenie_odbioru, odleglosc, typ, specjalna):
 # wynik = wybierz_sowe_zwroc_koszt(True, 'lokalna', 'list', 'wyjec')
 # print(wynik)
 
-# Liczenie zad3
 def licz_sume(dane_wejsciowe):
     # Przeliczniki
     przelicznik_sykli_na_geleony = 17
@@ -80,14 +79,12 @@ def wyslij_sowe(adresat, tresc_listu):
     else:
         print("Błąd podczas wysyłania sowy.")
         return False
-
 # Przykładowe użycie funkcji
 # adresat = "Jan Kowalski"
 # tresc_listu = "Cześć Janek, jak się masz?"
 # powodzenie = wyslij_sowe(adresat, tresc_listu)
 # print("Operacja powiodła się:", powodzenie)
 
-#Przetestowane, rzeczywiście raz na 10 razy sowa sie nie wysyla
 def waluta_dict_na_str(waluta_dict: dict):
     # Słownik odmiany poszczególnych walut
     waluty = {
