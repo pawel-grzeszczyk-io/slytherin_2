@@ -1,3 +1,6 @@
+import time
+import random
+
 def wybierz_sowe_zwroc_koszt(potwierdzenie_odbioru, odleglosc, typ, specjalna):
     koszt = 0 # wpisz koszt
     
@@ -31,10 +34,9 @@ def wybierz_sowe_zwroc_koszt(potwierdzenie_odbioru, odleglosc, typ, specjalna):
     knut = reszta_galeony % 29
     
     return {"galeon": galeon, "sykl": sykl, "knut": knut}
-
 # Przykładowe wywołanie
-wynik = wybierz_sowe_zwroc_koszt(True, 'lokalna', 'list', 'wyjec')
-print(wynik)
+# wynik = wybierz_sowe_zwroc_koszt(True, 'lokalna', 'list', 'wyjec')
+# print(wynik)
 
 # Liczenie zad3
 def licz_sume(dane_wejsciowe):
@@ -63,14 +65,9 @@ def licz_sume(dane_wejsciowe):
     }
 
     return wynik
-
-# Powinno być git
-
 # Przykładowe użycie funkcji
-dane = {'geleon': 0, 'sykl': 0, 'knut': 0}
-print(licz_sume(dane))
-import time
-import random
+# dane = {'geleon': 0, 'sykl': 0, 'knut': 0}
+# print(licz_sume(dane))
 
 def wyslij_sowe(adresat, tresc_listu):
     print(f"Wysyłanie listu do {adresat}...")
@@ -85,9 +82,54 @@ def wyslij_sowe(adresat, tresc_listu):
         return False
 
 # Przykładowe użycie funkcji
-adresat = "Jan Kowalski"
-tresc_listu = "Cześć Janek, jak się masz?"
-powodzenie = wyslij_sowe(adresat, tresc_listu)
-print("Operacja powiodła się:", powodzenie)
+# adresat = "Jan Kowalski"
+# tresc_listu = "Cześć Janek, jak się masz?"
+# powodzenie = wyslij_sowe(adresat, tresc_listu)
+# print("Operacja powiodła się:", powodzenie)
 
 #Przetestowane, rzeczywiście raz na 10 razy sowa sie nie wysyla
+def waluta_dict_na_str(waluta_dict: dict):
+    # Słownik odmiany poszczególnych walut
+    waluty = {
+        'galeon' : ['galeony', 'galeonów'],
+        'sykl' : ['sykle', 'sykli'],
+        'knut' : ['knuty', 'knutów']
+    }
+
+    # Zmienna do przechowywania wyniku konwersji
+    waluta_str = ''
+
+    # Iteruje po kluczach (waluta) i wartościach (wartosc) słownika
+    for waluta, wartosc in waluta_dict.items():
+
+        # Jeśli waluta nie jest na liście walut - zwróć błąd
+        if waluta not in waluty.keys():
+            raise ValueError('Podano nieprawidłową walutę')
+
+        # Jeśli wartość nie jest liczbą całkowitą - zwróć błąd
+        if not isinstance(wartosc, int):
+            raise TypeError('Wartości nominałów muszą być liczbami całkowitymi')
+        
+        # Jeśli wartość jest mniejsza od 0 - zwróć błąd
+        if wartosc < 0:
+            raise ValueError('Wartości nominałów nie mogą być mniejsze od 0')
+        
+        # Jeśli wartość jest równa 0 - pominń
+        elif wartosc == 0:
+            continue
+
+        # Jeśli wartość jest równa 1 - zwróć z domyślnym formatowaniem waluty
+        elif wartosc == 1:
+            waluta_str += f' {wartosc} {waluta}' 
+
+        # Jeśli wartość jest większa od 1 - zwróć z poprawionym formatowaniem (na podstawie `waluty`)
+        else:
+            if wartosc < 5:
+                new_waluta = waluty[waluta][0]
+            else:
+                new_waluta = waluty[waluta][1]
+
+            waluta_str += f' {wartosc} {new_waluta}' 
+    
+    # Wyprintuj ostateczny wynik
+    print(waluta_str.strip())
