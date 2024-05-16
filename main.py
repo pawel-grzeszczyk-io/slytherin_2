@@ -130,3 +130,18 @@ def waluta_dict_na_str(waluta_dict: dict):
     
     # Wyprintuj ostateczny wynik
     print(waluta_str.strip())
+
+
+import csv
+
+def nadaj_sowe(adresat, tresc_wiadomosci, potwierdzenie_odbioru, odleglosc, typ, specjalna):
+    koszt_przesylki = wybierz_sowe_zwroc_koszt(potwierdzenie_odbioru, odleglosc, typ, specjalna)
+    koszt_str = waluta_dict_na_str(koszt_przesylki)
+    potwierdzenie_str = "TAK" if potwierdzenie_odbioru else "NIE"
+
+    with open('poczta_nadania_lista.csv', 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([adresat, tresc_wiadomosci, koszt_str, potwierdzenie_str])
+
+nadaj_sowe("Zuza", "Testujemy czy system nam dziala", True, 'lokalna', 'list', 'wyjec')
+
