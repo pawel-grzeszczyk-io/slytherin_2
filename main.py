@@ -129,4 +129,4 @@ def waluta_dict_na_str(waluta_dict: dict):
             waluta_str += f' {wartosc} {new_waluta}' 
     
     # Wyprintuj ostateczny wynik
-    print(waluta_str.strip())
+    return waluta_str.strip()
