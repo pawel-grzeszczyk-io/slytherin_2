@@ -1,5 +1,6 @@
 import time
 import random
+import csv
 
 def wybierz_sowe_zwroc_koszt(potwierdzenie_odbioru, odleglosc, typ, specjalna):
     koszt = 0 # wpisz koszt
@@ -130,9 +131,6 @@ def waluta_dict_na_str(waluta_dict: dict):
     
     # Wyprintuj ostateczny wynik
     print(waluta_str.strip())
-
-
-import csv
 
 def nadaj_sowe(adresat, tresc_wiadomosci, potwierdzenie_odbioru, odleglosc, typ, specjalna):
     koszt_przesylki = wybierz_sowe_zwroc_koszt(potwierdzenie_odbioru, odleglosc, typ, specjalna)
