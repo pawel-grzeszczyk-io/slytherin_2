@@ -5,9 +5,9 @@ name: Przywitanie z prefektem
 
 on:
   push:
-    branches: [ "branch_oli" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "branch_oli" ]
+    branches: [ "main" ]
 
 permissions:
   contents: read
