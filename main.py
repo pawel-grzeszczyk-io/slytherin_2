@@ -1,4 +1,8 @@
-<<<<<<< HEAD
+import time
+import random
+import csv
+from datetime import datetime
+import pandas as pd
 
 def waluta_str_na_dict(input_str):
     # Słownik z wartościami domyślnymi dla każdego typu monety
@@ -39,12 +43,6 @@ def waluta_str_na_dict(input_str):
     return currency_dict
 print(waluta_str_na_dict("13 knut"))
 print(waluta_str_na_dict("17 galeon 100 sykl 13 k"))
-=======
-import time
-import random
-import csv
-from datetime import datetime
-import pandas as pd
 
 def wybierz_sowe_zwroc_koszt(potwierdzenie_odbioru, odleglosc, typ, specjalna):
     koszt = 0 # wpisz koszt
@@ -218,6 +216,3 @@ def poczta_wyslij_sowy(sciezka_do_pliku):
 
     
 poczta_wyslij_sowy('poczta_nadania_lista.csv')
-
-
->>>>>>> staging
