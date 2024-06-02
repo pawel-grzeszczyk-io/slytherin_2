@@ -81,15 +81,15 @@ def wybierz_sowe_zwroc_koszt(potwierdzenie_odbioru, odleglosc, typ, specjalna):
 # wynik = wybierz_sowe_zwroc_koszt(True, 'lokalna', 'list', 'wyjec')
 # print(wynik)
 
-def licz_sume(dane_wejsciowe):
+def licz_sume(slownik_wejsciowy):
     # Przeliczniki
     przelicznik_sykli_na_geleony = 17
     przelicznik_knutow_na_sykli = 21
 
     # Podawanie liczby
-    ilosc_geleonow = int(input("Podaj ilość geleonów: "))
-    ilosc_sykli = int(input("Podaj ilość sykli: "))
-    ilosc_knutow = int(input("Podaj ilość knutów: "))
+    ilosc_geleonow = sum(slownik_wejsciowy['galeon'])
+    ilosc_sykli = sum(slownik_wejsciowy['sykl'])
+    ilosc_knutow = sum(slownik_wejsciowy['knut'])
 
     suma_knutow = ilosc_knutow + ilosc_sykli * przelicznik_knutow_na_sykli + ilosc_geleonow * przelicznik_sykli_na_geleony * przelicznik_knutow_na_sykli
 
@@ -107,9 +107,6 @@ def licz_sume(dane_wejsciowe):
     }
 
     return wynik
-# Przykładowe użycie funkcji
-# dane = {'geleon': 0, 'sykl': 0, 'knut': 0}
-# print(licz_sume(dane))
 
 def wyslij_sowe(adresat, tresc_listu):
     print(f"Wysyłanie listu do {adresat}...")
