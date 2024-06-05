@@ -1,12 +1,10 @@
 from main import waluta_dict_na_str 
 
 
-test = {
-    "galeon" : 3,
-    "sykl" : 4,
-    "knut" : 13
-}
+def test_waluta_dict_na_str:
+    x == { "galeon" : 0, "sykl" : 0, "knut" : 13}
 
-waluta_dict_na_str(test)
+    
+    assert x == ("13 knut")
 
 
