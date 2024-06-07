@@ -1,4 +1,8 @@
-<<<<<<< HEAD
+import time
+import random
+import csv
+from datetime import datetime
+import pandas as pd
 
 def waluta_str_na_dict(input_str):
     # Słownik z wartościami domyślnymi dla każdego typu monety
@@ -37,14 +41,8 @@ def waluta_str_na_dict(input_str):
     
     
     return currency_dict
-print(waluta_str_na_dict("13 knut"))
-print(waluta_str_na_dict("17 galeon 100 sykl 13 k"))
-=======
-import time
-import random
-import csv
-from datetime import datetime
-import pandas as pd
+# print(waluta_str_na_dict("13 knut"))
+# print(waluta_str_na_dict("17 galeon 100 sykl 13 k"))
 
 def wybierz_sowe_zwroc_koszt(potwierdzenie_odbioru, odleglosc, typ, specjalna):
     koszt = 0 # wpisz koszt
@@ -83,15 +81,15 @@ def wybierz_sowe_zwroc_koszt(potwierdzenie_odbioru, odleglosc, typ, specjalna):
 # wynik = wybierz_sowe_zwroc_koszt(True, 'lokalna', 'list', 'wyjec')
 # print(wynik)
 
-def licz_sume(dane_wejsciowe):
+def licz_sume(slownik_wejsciowy):
     # Przeliczniki
     przelicznik_sykli_na_geleony = 17
     przelicznik_knutow_na_sykli = 21
 
     # Podawanie liczby
-    ilosc_geleonow = int(input("Podaj ilość geleonów: "))
-    ilosc_sykli = int(input("Podaj ilość sykli: "))
-    ilosc_knutow = int(input("Podaj ilość knutów: "))
+    ilosc_geleonow = sum(slownik_wejsciowy['galeon'])
+    ilosc_sykli = sum(slownik_wejsciowy['sykl'])
+    ilosc_knutow = sum(slownik_wejsciowy['knut'])
 
     suma_knutow = ilosc_knutow + ilosc_sykli * przelicznik_knutow_na_sykli + ilosc_geleonow * przelicznik_sykli_na_geleony * przelicznik_knutow_na_sykli
 
@@ -109,9 +107,6 @@ def licz_sume(dane_wejsciowe):
     }
 
     return wynik
-# Przykładowe użycie funkcji
-# dane = {'geleon': 0, 'sykl': 0, 'knut': 0}
-# print(licz_sume(dane))
 
 def wyslij_sowe(adresat, tresc_listu):
     print(f"Wysyłanie listu do {adresat}...")
@@ -184,10 +179,7 @@ def nadaj_sowe(adresat, tresc_wiadomosci, potwierdzenie_odbioru, odleglosc, typ,
     with open('poczta_nadania_lista.csv', 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([adresat, tresc_wiadomosci, koszt_str, potwierdzenie_str])
-
-nadaj_sowe("Zuza", "Testujemy czy system nam dziala", True, 'lokalna', 'list', 'wyjec')
-
-
+# nadaj_sowe("Zuza", "Testujemy czy system nam dziala", True, 'lokalna', 'list', 'wyjec')
 
 def poczta_wyslij_sowy(sciezka_do_pliku):
     column_names = ['adresat', 'treść wiadomości', 'koszt przesyłki', 'potwierdzenie odbioru']
@@ -215,9 +207,4 @@ def poczta_wyslij_sowy(sciezka_do_pliku):
 
     wyniki_df = pd.DataFrame(wyniki)
     wyniki_df.to_csv('output_sowy_z_poczty_dzien_miesiac_rok.csv')
-
-    
-poczta_wyslij_sowy('poczta_nadania_lista.csv')
-
-
->>>>>>> staging
+# poczta_wyslij_sowy('poczta_nadania_lista.csv')
